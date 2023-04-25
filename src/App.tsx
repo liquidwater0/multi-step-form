@@ -3,7 +3,7 @@ import { useForm } from './context/FormContext';
 import "./scss/App.scss";
 
 function App() {
-	const { steps, currentStep, nextStep, prevStep } = useForm();
+	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
 
 	function handleFormSubmit(event: FormEvent) {
 		event.preventDefault();
@@ -33,28 +33,31 @@ function App() {
 						{ currentStep.element }
 					</div>
 
-					<div className="form-buttons">
-						{
-							currentStep.step > 1 &&
-							<button onClick={prevStep}>
-								Go Back
-							</button>
-						}
+					{
+						!done &&
+						<div className="form-buttons">
+							{
+								currentStep.step > 1 &&
+								<button onClick={prevStep}>
+									Go Back
+								</button>
+							}
 
-						{
-							currentStep.step < steps.length &&
-							<button onClick={nextStep}>
-								Next Step
-							</button>
-						}
+							{
+								currentStep.step < steps.length &&
+								<button onClick={nextStep}>
+									Next Step
+								</button>
+							}
 
-						{
-							currentStep.step === steps.length &&
-							<button >
-								Confirm
-							</button>
-						}
-					</div>
+							{
+								currentStep.step === steps.length &&
+								<button onClick={confirm}>
+									Confirm
+								</button>
+							}
+						</div>
+					}
 				</div>
 			</form>
 		</main>

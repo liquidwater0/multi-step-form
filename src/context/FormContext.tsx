@@ -13,8 +13,10 @@ type Step = {
 type FormContextType = {
     steps: Step[],
     currentStep: Step,
+    done: boolean,
     nextStep: () => void,
-    prevStep: () => void
+    prevStep: () => void,
+    confirm: () => void
 }
 
 const FormContext = createContext<FormContextType>(null!);
@@ -31,6 +33,7 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         { step: 4, text: "Summary", element: <Summary/> }
     ]);
     const [currentStep, setCurrentStep] = useState<Step>(steps[0]);
+    const [done, setDone] = useState<boolean>(false);
 
     function nextStep() {
         setCurrentStep(prevStep => {
@@ -56,8 +59,12 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         });
     }
 
+    function confirm() {
+        setDone(true);
+    }
+
     return (
-        <FormContext.Provider value={{ steps, currentStep, nextStep, prevStep }}>
+        <FormContext.Provider value={{ steps, currentStep, done, nextStep, prevStep, confirm }}>
             { children }
         </FormContext.Provider>
     );
