@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, ReactNode } from "react";
+import { useContext, createContext, useState, ReactNode, Dispatch, SetStateAction } from "react";
 import YourInfo from "../components/Form/Steps/YourInfo";
 import SelectPlan from "../components/Form/Steps/SelectPlan";
 import AddOns from "../components/Form/Steps/AddOns";
@@ -10,10 +10,22 @@ type Step = {
     element: ReactNode
 }
 
+type FormData = {
+    name: string,
+    email: string,
+    phone: string,
+    plan: { name: string, cost: number },
+    billing: string,
+    addOns: { name: string, cost: number }[],
+    total: number
+}
+
 type FormContextType = {
     steps: Step[],
     currentStep: Step,
     done: boolean,
+    formData: FormData,
+    setFormData: Dispatch<SetStateAction<FormData>>
     nextStep: () => void,
     prevStep: () => void,
     confirm: () => void
@@ -33,6 +45,15 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         { step: 4, text: "Summary", element: <Summary/> }
     ]);
     const [currentStep, setCurrentStep] = useState<Step>(steps[0]);
+    const [formData, setFormData] = useState<FormData>({
+        name: "",
+        email: "",
+        phone: "",
+        plan: { name: "", cost: 0 },
+        billing: "monthly",
+        addOns: [],
+        total: 0
+    });
     const [done, setDone] = useState<boolean>(false);
 
     function nextStep() {
@@ -64,7 +85,7 @@ export default function FormProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <FormContext.Provider value={{ steps, currentStep, done, nextStep, prevStep, confirm }}>
+        <FormContext.Provider value={{ steps, currentStep, done, formData, setFormData, nextStep, prevStep, confirm }}>
             { children }
         </FormContext.Provider>
     );
