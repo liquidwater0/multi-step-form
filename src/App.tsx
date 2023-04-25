@@ -47,6 +47,13 @@ function App() {
 								Next Step
 							</button>
 						}
+
+						{
+							currentStep.step === steps.length &&
+							<button >
+								Confirm
+							</button>
+						}
 					</div>
 				</div>
 			</form>
