@@ -1,14 +1,10 @@
-import { useState } from 'react';
+import { useForm } from '../../../context/FormContext';
 import arcade from "../../../assets/images/icon-arcade.svg";
 import advanced from "../../../assets/images/icon-advanced.svg";
 import pro from "../../../assets/images/icon-pro.svg";
 
 export default function SelectPlan() {
-    const [billing, setBilling] = useState<string>("monthly");
-
-    function handleBillingToggle() {
-        setBilling(prevBilling => prevBilling === "monthly" ? "yearly" : "monthly");
-    }
+    const { formData, setFormData } = useForm();
 
     return (
         <div className='select-plan-step'>
@@ -17,7 +13,20 @@ export default function SelectPlan() {
 
             <div>
                 <div className="plans">
-                    <div className="plan">
+                    <div 
+                        className="plan"
+                        onClick={() => {
+                            setFormData(prevData => {
+                                return { 
+                                    ...prevData, 
+                                    plan: { 
+                                        name: "Arcade", 
+                                        cost: formData.billing === "monthly" ? 9 : 90
+                                    } 
+                                };
+                            });
+                        }}
+                    >
                         <img 
                             src={arcade} 
                             alt="arcade" 
@@ -25,10 +34,23 @@ export default function SelectPlan() {
                         />
                         <p className="plan-label">Arcade</p>
                         <p className="plan-cost">
-                            { billing === "monthly" ? "$9/mo" : "$90/yr" }
+                            { formData.billing === "monthly" ? "$9/mo" : "$90/yr" }
                         </p>
                     </div>
-                    <div className="plan">
+                    <div 
+                        className="plan"
+                        onClick={() => {
+                            setFormData(prevData => {
+                                return { 
+                                    ...prevData, 
+                                    plan: { 
+                                        name: "Advanced", 
+                                        cost: formData.billing === "monthly" ? 12 : 120
+                                    } 
+                                };
+                            });
+                        }}
+                    >
                         <img 
                             src={advanced} 
                             alt="advanced" 
@@ -36,10 +58,23 @@ export default function SelectPlan() {
                         />
                         <p className="plan-label">Advanced</p>
                         <p className="plan-cost">
-                            { billing === "monthly" ? "$12/mo" : "$120/yr" }
+                            { formData.billing === "monthly" ? "$12/mo" : "$120/yr" }
                         </p>
                     </div>
-                    <div className="plan">
+                    <div 
+                        className="plan"
+                        onClick={() => {
+                            setFormData(prevData => {
+                                return { 
+                                    ...prevData, 
+                                    plan: { 
+                                        name: "Pro", 
+                                        cost: formData.billing === "monthly" ? 15 : 150
+                                    } 
+                                };
+                            });
+                        }}
+                    >
                         <img 
                             src={pro} 
                             alt="pro" 
@@ -47,7 +82,7 @@ export default function SelectPlan() {
                         />
                         <p className="plan-label">Pro</p>
                         <p className="plan-cost">
-                            { billing === "monthly" ? "$15/mo" : "$150/yr" }
+                            { formData.billing === "monthly" ? "$15/mo" : "$150/yr" }
                         </p>
                     </div>
 
@@ -59,8 +94,15 @@ export default function SelectPlan() {
                                 name="billing-toggle" 
                                 id="billing-toggle" 
                                 className='billing-toggle'
-                                defaultChecked={billing === "monthly"}
-                                onChange={handleBillingToggle}
+                                defaultChecked={formData.billing === "monthly"}
+                                onChange={() => {
+                                    setFormData(prevData => {
+                                        return { 
+                                            ...prevData, 
+                                            billing: prevData.billing === "monthly" ? "yearly" : "monthly"
+                                        };
+                                    });
+                                }}
                             />
                         </div>
                         <label htmlFor="billing-toggle">Yearly</label>
