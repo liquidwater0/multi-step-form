@@ -1,4 +1,12 @@
-import { useContext, createContext, useState, ReactNode, Dispatch, SetStateAction } from "react";
+import { 
+    useContext, 
+    createContext, 
+    useState, 
+    useEffect, 
+    ReactNode, 
+    Dispatch, 
+    SetStateAction 
+} from "react";
 import YourInfo from "../components/Form/Steps/YourInfo";
 import SelectPlan from "../components/Form/Steps/SelectPlan";
 import AddOns from "../components/Form/Steps/AddOns";
@@ -14,9 +22,23 @@ type FormData = {
     name: string,
     email: string,
     phone: string,
-    plan: { name: string, cost: number },
+    plan: { 
+        name: string, 
+        cost: {
+            current: number,
+            monthly: number,
+            yearly: number
+        }
+    },
     billing: string,
-    addOns: { name: string, cost: number }[],
+    addOns: { 
+        name: string, 
+        cost: {
+            current: number,
+            monthly: number,
+            yearly: number
+        }
+    }[],
     total: number
 }
 
@@ -50,12 +72,43 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         name: "",
         email: "",
         phone: "",
-        plan: { name: "", cost: 0 },
+        plan: { 
+            name: "", 
+            cost: {
+                current: 0,
+                monthly: 0,
+                yearly: 0
+            } 
+        },
         billing: "monthly",
         addOns: [],
         total: 0
     });
     const [done, setDone] = useState<boolean>(false);
+
+    useEffect(() => {
+        setFormData(prevData => {
+            return {
+                ...prevData,
+                plan: {
+                    ...prevData.plan,
+                    cost: {
+                        ...prevData.plan.cost,
+                        current: prevData.plan.cost[formData.billing === "monthly" ? "monthly" : "yearly"]
+                    }
+                },
+                addOns: prevData.addOns.map(addon => {
+                    return { 
+                        ...addon,
+                        cost: {
+                            ...addon.cost,
+                            current: addon.cost[formData.billing === "monthly" ? "monthly" : "yearly"]
+                        }
+                    }
+                })
+            };
+        });
+    }, [formData.billing]);
 
     function nextStep() {
         setCurrentStep(prevStep => {

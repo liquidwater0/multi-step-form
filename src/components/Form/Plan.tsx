@@ -22,7 +22,11 @@ export default function Plan({ plan }: { plan: PlanType }) {
                     ...prevData, 
                     plan: { 
                         name: name, 
-                        cost: formData.billing === "monthly" ? cost.monthly : cost.yearly
+                        cost: {
+                            current: formData.billing === "monthly" ? cost.monthly : cost.yearly,
+                            monthly: cost.monthly,
+                            yearly: cost.yearly
+                        }
                     } 
                 };
             });
@@ -32,7 +36,11 @@ export default function Plan({ plan }: { plan: PlanType }) {
                     ...prevData, 
                     plan: { 
                         name: "", 
-                        cost: 0
+                        cost: {
+                            current: 0,
+                            monthly: 0,
+                            yearly: 0
+                        }
                     } 
                 };
             });

@@ -10,7 +10,7 @@ export default function Summary() {
             return {
                 ...prevData,
                 total:  [...formData.addOns, formData.plan].reduce((prev, current) => {
-                    return prev + current.cost;
+                    return prev + current.cost.current;
                 }, 0)
             };
         });
@@ -45,7 +45,7 @@ export default function Summary() {
                                 </button>
                             </div>
                             <div className='price'>
-                                <p>{`$${formData.plan.cost}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
+                                <p>{`$${formData.plan.cost.current}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
                             </div>
 
                             <hr/>
@@ -53,7 +53,7 @@ export default function Summary() {
                             {formData.addOns.map(({ name, cost }, index) => 
                                 <div key={index}>
                                     <p>{ name }</p>
-                                    <p>{`+${cost}/${formData.billing === "monthly" ? "mo" : "yr" }`}</p>
+                                    <p>{`+${cost.current}/${formData.billing === "monthly" ? "mo" : "yr" }`}</p>
                                 </div>
                             )}
                         </div>

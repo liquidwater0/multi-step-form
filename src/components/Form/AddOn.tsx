@@ -22,7 +22,11 @@ export default function AddOn({ addon }: { addon: AddonType }) {
                         ...prevData.addOns,
                         { 
                             name: name, 
-                            cost: formData.billing === "monthly" ? cost.monthly : cost.yearly
+                            cost: {
+                                current: formData.billing === "monthly" ? cost.monthly : cost.yearly,
+                                monthly: cost.monthly,
+                                yearly: cost.yearly
+                            }
                         }
                     ]
                 };

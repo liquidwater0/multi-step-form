@@ -2,11 +2,6 @@ import { FormEvent } from 'react';
 import { useForm } from './context/FormContext';
 import "./scss/App.scss";
 
-/*
-	TODO:
-	Handle updating costs when switching billing
-*/
-
 function App() {
 	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
 
