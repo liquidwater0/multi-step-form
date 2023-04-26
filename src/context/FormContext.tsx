@@ -88,7 +88,17 @@ export default function FormProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <FormContext.Provider value={{ steps, currentStep, done, formData, setFormData, nextStep, prevStep, goToStep, confirm }}>
+        <FormContext.Provider value={{ 
+            steps, 
+            currentStep, 
+            done, 
+            formData, 
+            setFormData, 
+            nextStep, 
+            prevStep, 
+            goToStep, 
+            confirm 
+        }}>
             { children }
         </FormContext.Provider>
     );
