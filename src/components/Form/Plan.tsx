@@ -5,7 +5,11 @@ import { PlanType } from "./Steps/SelectPlan";
 export default function Plan({ plan }: { plan: PlanType }) {
     const { name, icon, cost } = plan;
     const { formData, setFormData } = useForm();
-    const [checked, setChecked] = useState<boolean>(false);
+    const [checked, setChecked] = useState<boolean>(() => {
+        const currentPlanSelected = formData.plan.name === name;
+        if (currentPlanSelected) return true;
+        return false;
+    });
 
     return (
         <div 
