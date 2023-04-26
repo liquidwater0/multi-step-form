@@ -4,7 +4,8 @@
 @use "./steps//summary" as *;
 
 @use "./buttons" as *;
-@use "./inputs" as *;
+@use "./input" as *;
+@use "./slider" as *;
 
 .form {
     display: grid;
