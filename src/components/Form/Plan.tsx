@@ -15,6 +15,7 @@ export default function Plan({ plan }: { plan: PlanType }) {
         <div 
             className={`plan ${checked ? "selected" : ""}`}
             onClick={() => {
+                setChecked(checkedState => !checkedState);
                 setFormData(prevData => {
                     return { 
                         ...prevData, 
@@ -24,8 +25,6 @@ export default function Plan({ plan }: { plan: PlanType }) {
                         } 
                     };
                 });
-
-                setChecked(checkedState => !checkedState);
             }}
         >
             <img 
