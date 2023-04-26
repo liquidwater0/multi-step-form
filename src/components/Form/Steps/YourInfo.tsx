@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { useForm } from "../../../context/FormContext";
+import Input from "../Input";
 
 export default function YourInfo() {
     const { formData, setFormData } = useForm();
@@ -12,11 +13,11 @@ export default function YourInfo() {
             <div className="step-container">
                 <div className="form-input-section">
                     <label htmlFor="name">Name</label>
-                    <input 
-                        type="text" 
-                        id="name" 
+                    <Input
+                        type="text"
+                        id="name"
                         defaultValue={formData.name}
-                        onChange={(event: ChangeEvent) => {
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setFormData(prevData => {
                                 return { ...prevData, name: (event.target as HTMLInputElement).value };
                             });
@@ -25,11 +26,11 @@ export default function YourInfo() {
                 </div>
                 <div className="form-input-section">
                     <label htmlFor="email">Email Address</label>
-                    <input 
-                        type="email" 
+                    <Input
+                        type="email"
                         id="email"
                         defaultValue={formData.email}
-                        onChange={(event: ChangeEvent) => {
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setFormData(prevData => {
                                 return { ...prevData, email: (event.target as HTMLInputElement).value };
                             });
@@ -38,11 +39,11 @@ export default function YourInfo() {
                 </div>
                 <div className="form-input-section">
                     <label htmlFor="phone">Phone Number</label>
-                    <input 
-                        type="tel" 
+                    <Input
+                        type="tel"
                         id="phone"
                         defaultValue={formData.phone}
-                        onChange={(event: ChangeEvent) => {
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setFormData(prevData => {
                                 return { ...prevData, phone: (event.target as HTMLInputElement).value };
                             });
