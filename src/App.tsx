@@ -4,6 +4,7 @@ import "./scss/App.scss";
 
 /*
 	TODO
+	Handle removing items when unselecting
 	Handle updating costs when switching billing
 	Fix add ons duplicating
 */
