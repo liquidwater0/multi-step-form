@@ -7,26 +7,36 @@ export default function AddOn({ addon }: { addon: AddonType }) {
     const { formData, setFormData } = useForm();
     const [checked, setChecked] = useState<boolean>(false);
 
-    return (
-        <div 
-            className="add-on"
-            onClick={() => {
-                setFormData(prevData => {
-                    return {
-                        ...prevData,
-                        addOns: [
-                            ...prevData.addOns,
-                            { 
-                                name: name, 
-                                cost: formData.billing === "monthly" ? cost.monthly : cost.yearly
-                            }
-                        ]
-                    };
-                });
+    function handleAddonClick() {
+        setChecked(checkedState => !checkedState);
 
-                setChecked(checkedState => !checkedState);
-            }}
-        >
+        //it for some reason needs to be inverted to work properly
+        //it should be if checked then add to the array, otherwise filter it
+        if (!checked) {
+            setFormData(prevData => {
+                return {
+                    ...prevData,
+                    addOns: [
+                        ...prevData.addOns,
+                        { 
+                            name: name, 
+                            cost: formData.billing === "monthly" ? cost.monthly : cost.yearly
+                        }
+                    ]
+                };
+            });
+        } else {
+            setFormData(prevData => {
+                return {
+                    ...prevData,
+                    addOns: prevData.addOns.filter(a => a.name !== name)
+                };
+            });
+        }
+    }
+
+    return (
+        <div className="add-on" onClick={handleAddonClick}>
             <input 
                 type="checkbox"
                 checked={checked}

@@ -5,9 +5,7 @@ import "./scss/App.scss";
 /*
 	TODO:
 	Make it so only 1 plan can be selected at once
-	Handle removing items when unselecting
 	Handle updating costs when switching billing
-	Fix add ons duplicating
 */
 
 function App() {
