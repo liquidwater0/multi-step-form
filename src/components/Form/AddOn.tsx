@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "../../context/FormContext";
 import { AddonType } from "./Steps/AddOns";
+import Checkbox from "./Checkbox";
 
 export default function AddOn({ addon }: { addon: AddonType }) {
     const { name, description, cost } = addon;
@@ -46,11 +47,8 @@ export default function AddOn({ addon }: { addon: AddonType }) {
             className={`add-on ${checked ? "selected" : ""}`}
             onClick={handleAddonClick}
         >
-            <input 
-                type="checkbox"
-                checked={checked}
-                readOnly
-            />
+            <Checkbox checked={checked}/>
+            
             <div className='add-on-description'>
                 <p>{ name }</p>
                 <p>{ description }</p>

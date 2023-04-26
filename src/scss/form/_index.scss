@@ -6,6 +6,7 @@
 @use "./buttons" as *;
 @use "./input" as *;
 @use "./slider" as *;
+@use "./checkbox" as *;
 
 .form {
     display: grid;
