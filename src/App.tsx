@@ -4,7 +4,6 @@ import "./scss/App.scss";
 
 /*
 	TODO:
-	Make it so only 1 plan can be selected at once
 	Handle updating costs when switching billing
 */
 

@@ -14,8 +14,6 @@ export default function AddOn({ addon }: { addon: AddonType }) {
     function handleAddonClick() {
         setChecked(checkedState => !checkedState);
 
-        //it for some reason needs to be inverted to work properly
-        //it should be if checked then add to the array, otherwise filter it
         if (!checked) {
             setFormData(prevData => {
                 return {
