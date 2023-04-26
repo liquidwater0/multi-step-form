@@ -1,0 +1,96 @@
+@use "./steps//yourInfo" as *;
+@use "./steps/selectPlan" as *;
+@use "./steps/addons" as *;
+@use "./steps//summary" as *;
+
+.form {
+    display: grid;
+    grid-template-columns: min-content auto;
+    background-color: var(--color-neutral-5);
+    width: 900px;
+    padding: 1rem;
+    padding-right: 0;
+    border-radius: 1rem;
+}
+
+.side-bar {
+    position: relative;
+    color: var(--color-neutral-5);
+
+    .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 2.5rem;
+
+        .step-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .step-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            background-color: transparent;
+            border: 1px solid var(--color-neutral-5);
+            border-radius: 100%;
+            width: 2.25em;
+            height: 2.25em;
+            margin-right: 1.25rem;
+            transition: background-color 500ms;
+
+            &.active {
+                background-color: var(--color-primary-4);
+                color: var(--color-primary-1);
+            }
+        }
+
+        .step-text {
+            text-transform: uppercase;
+            font-weight: 500;
+
+            p:nth-child(1) {
+                color: var(--color-neutral-1);
+                font-size: 0.8rem;
+                margin-bottom: 0.25rem;
+            }
+
+            p:nth-child(2) {
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: var(--color-primary-1);
+    margin: 0 4.5rem;
+
+    .step {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+    }
+
+    .step-content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .step-title {
+        margin-top: 3rem;
+    }
+
+    .subtitle {
+        color: var(--color-neutral-1);
+        margin-bottom: 3rem;
+    }
+}
