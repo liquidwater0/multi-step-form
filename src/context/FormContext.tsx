@@ -16,8 +16,7 @@ type FormData = {
     phone: string,
     plan: { name: string, cost: number },
     billing: string,
-    addOns: { name: string, cost: number }[],
-    total: number
+    addOns: { name: string, cost: number }[]
 }
 
 type FormContextType = {
@@ -28,6 +27,7 @@ type FormContextType = {
     setFormData: Dispatch<SetStateAction<FormData>>
     nextStep: () => void,
     prevStep: () => void,
+    goToStep: (step: number) => void,
     confirm: () => void
 }
 
@@ -51,8 +51,7 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         phone: "",
         plan: { name: "", cost: 0 },
         billing: "monthly",
-        addOns: [],
-        total: 0
+        addOns: []
     });
     const [done, setDone] = useState<boolean>(false);
 
@@ -80,12 +79,16 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         });
     }
 
+    function goToStep(step: number) {
+        setCurrentStep(steps[step - 1]);
+    }
+
     function confirm() {
         setDone(true);
     }
 
     return (
-        <FormContext.Provider value={{ steps, currentStep, done, formData, setFormData, nextStep, prevStep, confirm }}>
+        <FormContext.Provider value={{ steps, currentStep, done, formData, setFormData, nextStep, prevStep, goToStep, confirm }}>
             { children }
         </FormContext.Provider>
     );

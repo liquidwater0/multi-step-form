@@ -2,7 +2,10 @@ import { useForm } from "../../../context/FormContext";
 import thankYou from "../../../assets/images/icon-thank-you.svg";
 
 export default function Summary() {
-    const { done } = useForm();
+    const { done, goToStep, formData } = useForm();
+    const totalCost = [...formData.addOns, formData.plan].reduce((prev, current) => {
+        return prev + current.cost;
+    }, 0);
 
     return (
         <div className='summary-step'>
@@ -27,26 +30,28 @@ export default function Summary() {
                     <>
                         <div className="summary">
                             <div>
-                                <p>Arcade {"(Monthly)"}</p>
-                                <button>Change</button>
+                                <p>{`${formData.plan.name} (${formData.billing === "monthly" ? "Monthly" : "Yearly"})`}</p>
+                                <button onClick={() => goToStep(2)}>
+                                    Change
+                                </button>
                             </div>
                             <div className='price'>
-                                <p>$9/mo</p>
+                                <p>{`$${formData.plan.cost}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
                             </div>
+
                             <hr/>
-                            <div>
-                                <p>Online service</p>
-                                <p>+1/mo</p>
-                            </div>
-                            <div>
-                                <p>Larger storage</p>
-                                <p>+2/mo</p>
-                            </div>
+
+                            {formData.addOns.map(({ name, cost }, index) => 
+                                <div key={index}>
+                                    <p>{ name }</p>
+                                    <p>{`+${cost}/${formData.billing === "monthly" ? "mo" : "yr" }`}</p>
+                                </div>
+                            )}
                         </div>
 
                         <div className='total'>
-                            <p>Total {"(per month)"}</p>
-                            <p>+12/mo</p>
+                            <p>{`Total (${formData.billing === "monthly" ? "per month" : "per year"})`}</p>
+                            <p>{`+${totalCost}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
                         </div>
                     </>
                 )
