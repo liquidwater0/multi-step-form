@@ -9,7 +9,7 @@ export default function Plan({ plan }: { plan: PlanType }) {
 
     return (
         <div 
-            className="plan"
+            className={`plan ${checked ? "selected" : ""}`}
             onClick={() => {
                 setFormData(prevData => {
                     return { 
@@ -24,13 +24,6 @@ export default function Plan({ plan }: { plan: PlanType }) {
                 setChecked(checkedState => !checkedState);
             }}
         >
-            <input 
-                type="checkbox"
-                style={{ position: "absolute", opacity: "0" }}
-                checked={checked}
-                readOnly
-            />
-
             <img 
                 src={icon.src} 
                 alt={icon.alt}
