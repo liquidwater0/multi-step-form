@@ -1,10 +1,42 @@
+import { useState, useEffect } from 'react';
 import { useForm } from '../../../context/FormContext';
 import arcade from "../../../assets/images/icon-arcade.svg";
 import advanced from "../../../assets/images/icon-advanced.svg";
 import pro from "../../../assets/images/icon-pro.svg";
+import Plan from '../Plan';
+
+export type PlanType = {
+    name: string,
+    icon: { src: string, alt: string },
+    cost: { monthly: number, yearly: number }
+}
 
 export default function SelectPlan() {
     const { formData, setFormData } = useForm();
+    const [plans] = useState<PlanType[]>([
+        {
+            name: "Arcade",
+            icon: { src: arcade, alt: "arcade" },
+            cost: {
+                monthly: 9,
+                yearly: 90
+            }
+        }, {
+            name: "Advanced",
+            icon: { src: advanced, alt: "advanced" },
+            cost: {
+                monthly: 12,
+                yearly: 120
+            }
+        }, {
+            name: "Pro",
+            icon: { src: pro, alt: "pro" },
+            cost: {
+                monthly: 15,
+                yearly: 150
+            }
+        }
+    ]);
 
     return (
         <div className='select-plan-step'>
@@ -13,78 +45,12 @@ export default function SelectPlan() {
 
             <div>
                 <div className="plans">
-                    <div 
-                        className="plan"
-                        onClick={() => {
-                            setFormData(prevData => {
-                                return { 
-                                    ...prevData, 
-                                    plan: { 
-                                        name: "Arcade", 
-                                        cost: formData.billing === "monthly" ? 9 : 90
-                                    } 
-                                };
-                            });
-                        }}
-                    >
-                        <img 
-                            src={arcade} 
-                            alt="arcade" 
-                            className="icon" 
+                    {plans.map(plan => 
+                        <Plan 
+                            key={plan.name}
+                            plan={plan}
                         />
-                        <p className="plan-label">Arcade</p>
-                        <p className="plan-cost">
-                            { formData.billing === "monthly" ? "$9/mo" : "$90/yr" }
-                        </p>
-                    </div>
-                    <div 
-                        className="plan"
-                        onClick={() => {
-                            setFormData(prevData => {
-                                return { 
-                                    ...prevData, 
-                                    plan: { 
-                                        name: "Advanced", 
-                                        cost: formData.billing === "monthly" ? 12 : 120
-                                    } 
-                                };
-                            });
-                        }}
-                    >
-                        <img 
-                            src={advanced} 
-                            alt="advanced" 
-                            className="icon" 
-                        />
-                        <p className="plan-label">Advanced</p>
-                        <p className="plan-cost">
-                            { formData.billing === "monthly" ? "$12/mo" : "$120/yr" }
-                        </p>
-                    </div>
-                    <div 
-                        className="plan"
-                        onClick={() => {
-                            setFormData(prevData => {
-                                return { 
-                                    ...prevData, 
-                                    plan: { 
-                                        name: "Pro", 
-                                        cost: formData.billing === "monthly" ? 15 : 150
-                                    } 
-                                };
-                            });
-                        }}
-                    >
-                        <img 
-                            src={pro} 
-                            alt="pro" 
-                            className="icon" 
-                        />
-                        <p className="plan-label">Pro</p>
-                        <p className="plan-cost">
-                            { formData.billing === "monthly" ? "$15/mo" : "$150/yr" }
-                        </p>
-                    </div>
+                    )}
 
                     <div className="billing-container">
                         <label htmlFor="billing-toggle">Monthly</label>
