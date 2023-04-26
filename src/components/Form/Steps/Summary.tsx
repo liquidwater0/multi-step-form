@@ -9,9 +9,6 @@ export default function Summary() {
 
     return (
         <div className='summary-step'>
-            <h1>Finishing up</h1>
-            <p>Double-check everything looks OK before confirming</p>
-
             {
                 done ? (
                     <div className="finished">
@@ -28,6 +25,9 @@ export default function Summary() {
                     </div>
                 ) : (
                     <>
+                        <h1>Finishing up</h1>
+                        <p>Double-check everything looks OK before confirming</p>
+
                         <div className="summary">
                             <div>
                                 <p>{`${formData.plan.name} (${formData.billing === "monthly" ? "Monthly" : "Yearly"})`}</p>
