@@ -4,7 +4,7 @@ import "./scss/App.scss";
 
 /*
 	TODO
-	Handle updating plan cost when switching billing
+	Handle updating costs when switching billing
 	Fix checkbox not updating when clicking addon
 	Fix add ons duplicating
 */
