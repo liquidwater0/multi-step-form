@@ -9,6 +9,7 @@ import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
 	Make validation
 	Make accessible
 	Make responsive
+	Style inputs
 */
 
 function App() {
