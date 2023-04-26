@@ -28,6 +28,7 @@ export default function Plan({ plan }: { plan: PlanType }) {
                 type="checkbox"
                 style={{ position: "absolute", opacity: "0" }}
                 checked={checked}
+                readOnly
             />
 
             <img 

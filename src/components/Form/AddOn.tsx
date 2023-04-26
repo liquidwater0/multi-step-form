@@ -30,6 +30,7 @@ export default function AddOn({ addon }: { addon: AddonType }) {
             <input 
                 type="checkbox"
                 checked={checked}
+                readOnly
             />
 
             <div className='add-on-description'>
