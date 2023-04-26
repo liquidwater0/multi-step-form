@@ -1,11 +1,23 @@
+import { useEffect } from "react";
 import { useForm } from "../../../context/FormContext";
 import thankYou from "../../../assets/images/icon-thank-you.svg";
 
 export default function Summary() {
-    const { done, goToStep, formData } = useForm();
-    const totalCost = [...formData.addOns, formData.plan].reduce((prev, current) => {
-        return prev + current.cost;
-    }, 0);
+    const { done, goToStep, formData, setFormData } = useForm();
+    // const totalCost = [...formData.addOns, formData.plan].reduce((prev, current) => {
+    //     return prev + current.cost;
+    // }, 0);
+
+    useEffect(() => {
+        setFormData(prevData => {
+            return {
+                ...prevData,
+                total:  [...formData.addOns, formData.plan].reduce((prev, current) => {
+                    return prev + current.cost;
+                }, 0)
+            };
+        });
+    }, []);
 
     return (
         <div className='summary-step'>
@@ -51,7 +63,7 @@ export default function Summary() {
 
                         <div className='total'>
                             <p>{`Total (${formData.billing === "monthly" ? "per month" : "per year"})`}</p>
-                            <p>{`+${totalCost}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
+                            <p>{`+${formData.total}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
                         </div>
                     </>
                 )

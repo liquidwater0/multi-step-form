@@ -16,7 +16,8 @@ type FormData = {
     phone: string,
     plan: { name: string, cost: number },
     billing: string,
-    addOns: { name: string, cost: number }[]
+    addOns: { name: string, cost: number }[],
+    total: number
 }
 
 type FormContextType = {
@@ -51,7 +52,8 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         phone: "",
         plan: { name: "", cost: 0 },
         billing: "monthly",
-        addOns: []
+        addOns: [],
+        total: 0
     });
     const [done, setDone] = useState<boolean>(false);
 
