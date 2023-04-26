@@ -42,13 +42,15 @@ export default function AddOn({ addon }: { addon: AddonType }) {
     }
 
     return (
-        <div className="add-on" onClick={handleAddonClick}>
+        <div 
+            className={`add-on ${checked ? "selected" : ""}`}
+            onClick={handleAddonClick}
+        >
             <input 
                 type="checkbox"
                 checked={checked}
                 readOnly
             />
-
             <div className='add-on-description'>
                 <p>{ name }</p>
                 <p>{ description }</p>
