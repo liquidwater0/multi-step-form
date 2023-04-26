@@ -40,7 +40,13 @@
         border-radius: 0.5rem;
 
         label {
+            color: var(--color-neutral-1);
             font-weight: 500;
+            transition: color 250ms;
+
+            &.active {
+                color: var(--color-primary-1);
+            }
         }
     }
 }

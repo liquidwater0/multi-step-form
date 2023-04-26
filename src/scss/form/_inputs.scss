@@ -20,3 +20,37 @@
         outline: none;
     }
 }
+
+.slider {
+    --gap: 7px;
+    --y-translate: calc(var(--gap) / 2);
+
+    position: relative;
+    background-color: var(--color-primary-1);
+    width: 50px;
+    height: 25px;
+    border-radius: 1000px;
+    cursor: pointer;
+
+    .slider-thumb {
+        position: absolute;
+        background-color: var(--color-neutral-5);
+        transform: translate(
+            calc(100% + var(--gap) + var(--gap) / 2), 
+            var(--y-translate)
+        );
+        height: calc(100% - var(--gap));
+        border-radius: 100%;
+        transition: transform 250ms;
+        aspect-ratio: 1 / 1;
+    }
+
+    &.checked {
+        .slider-thumb {
+            transform: translate(
+                calc(var(--gap) / 2), 
+                var(--y-translate)
+            );
+        }
+    }
+}

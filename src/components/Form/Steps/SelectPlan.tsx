@@ -4,6 +4,7 @@ import arcade from "../../../assets/images/icon-arcade.svg";
 import advanced from "../../../assets/images/icon-advanced.svg";
 import pro from "../../../assets/images/icon-pro.svg";
 import Plan from '../Plan';
+import Slider from '../Slider';
 
 export type PlanType = {
     name: string,
@@ -53,13 +54,15 @@ export default function SelectPlan() {
                     )}
                 </div>
                 <div className="billing-container">
-                    <label htmlFor="billing-toggle">Monthly</label>
+                    <label 
+                        className={formData.billing === "monthly" ? "active" : ""}
+                        htmlFor="billing-toggle"
+                    >
+                        Monthly
+                    </label>
                     <div className="billing-toggle-container">
-                        <input 
-                            type="checkbox" 
-                            name="billing-toggle" 
-                            id="billing-toggle" 
-                            className='billing-toggle'
+                        <Slider
+                            id="billing-toggle"
                             defaultChecked={formData.billing === "monthly"}
                             onChange={() => {
                                 setFormData(prevData => {
@@ -71,7 +74,12 @@ export default function SelectPlan() {
                             }}
                         />
                     </div>
-                    <label htmlFor="billing-toggle">Yearly</label>
+                    <label 
+                        className={formData.billing === "yearly" ? "active" : ""}
+                        htmlFor="billing-toggle"
+                    >
+                        Yearly
+                    </label>
                 </div>
             </div>
         </div>
