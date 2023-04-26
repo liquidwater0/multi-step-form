@@ -22,7 +22,7 @@ function App() {
 							</div>
 							<div>
 								<p>Step { step }</p>
-								<p> { text } </p>
+								<p>{ text }</p>
 							</div>
 						</div>	
 					)}
