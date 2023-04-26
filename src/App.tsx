@@ -4,6 +4,13 @@ import "./scss/App.scss";
 import mobileSidebar from "./assets/images/bg-sidebar-mobile.svg";
 import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
 
+/*
+	TODO:
+	Make validation
+	Make accessible
+	Make responsive
+*/
+
 function App() {
 	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
 
