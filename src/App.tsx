@@ -48,21 +48,21 @@ function App() {
 						<div className="form-buttons">
 							{
 								currentStep.step > 1 &&
-								<button onClick={prevStep}>
+								<button onClick={prevStep} className='btn btn-secondary'>
 									Go Back
 								</button>
 							}
 
 							{
 								currentStep.step < steps.length &&
-								<button onClick={nextStep}>
+								<button onClick={nextStep} className='btn btn-primary'>
 									Next Step
 								</button>
 							}
 
 							{
 								currentStep.step === steps.length &&
-								<button onClick={confirm}>
+								<button onClick={confirm} className='btn btn-primary'>
 									Confirm
 								</button>
 							}

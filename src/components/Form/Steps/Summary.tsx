@@ -43,7 +43,7 @@ export default function Summary() {
                                     <div>
                                         <p>{`${formData.plan.name} (${formData.billing === "monthly" ? "Monthly" : "Yearly"})`}</p>
                                         <button 
-                                            className="change-plan-button"
+                                            className="btn change-plan-button"
                                             onClick={() => goToStep(2)} 
                                         >
                                             Change
