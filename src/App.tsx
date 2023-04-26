@@ -2,6 +2,12 @@ import { FormEvent } from 'react';
 import { useForm } from './context/FormContext';
 import "./scss/App.scss";
 
+/*
+	TODO
+	Fix checkbox not updating when clicking addon
+	Fix add ons duplicating
+*/
+
 function App() {
 	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
 
