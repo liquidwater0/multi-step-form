@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from '../../../context/FormContext';
 import arcade from "../../../assets/images/icon-arcade.svg";
 import advanced from "../../../assets/images/icon-advanced.svg";
