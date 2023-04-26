@@ -16,6 +16,7 @@ export default function YourInfo() {
                     <Input
                         type="text"
                         id="name"
+                        placeholder="e.g. Stephen King"
                         defaultValue={formData.name}
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setFormData(prevData => {
@@ -29,6 +30,7 @@ export default function YourInfo() {
                     <Input
                         type="email"
                         id="email"
+                        placeholder="e.g. stephenking@lorem.com"
                         defaultValue={formData.email}
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setFormData(prevData => {
@@ -42,6 +44,7 @@ export default function YourInfo() {
                     <Input
                         type="tel"
                         id="phone"
+                        placeholder="e.g. +1 234 567 890"
                         defaultValue={formData.phone}
                         onChange={(event: ChangeEvent<HTMLInputElement>) => {
                             setFormData(prevData => {

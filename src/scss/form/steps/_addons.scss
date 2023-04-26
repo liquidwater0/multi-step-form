@@ -13,6 +13,9 @@
         border-radius: 0.5rem;
         padding: 1.5rem;
         cursor: pointer;
+        transition: 
+            border-color 250ms,
+            background-color 250ms;
 
         .add-on-description {
             p:nth-child(1) {
