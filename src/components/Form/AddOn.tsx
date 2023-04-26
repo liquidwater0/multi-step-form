@@ -5,7 +5,11 @@ import { AddonType } from "./Steps/AddOns";
 export default function AddOn({ addon }: { addon: AddonType }) {
     const { name, description, cost } = addon;
     const { formData, setFormData } = useForm();
-    const [checked, setChecked] = useState<boolean>(false);
+    const [checked, setChecked] = useState<boolean>(() => {
+        const currentAddon = formData.addOns.find(a => a.name === name);
+        if (currentAddon) return true;
+        return false;
+    });
 
     function handleAddonClick() {
         setChecked(checkedState => !checkedState);
