@@ -39,40 +39,39 @@ export default function SelectPlan() {
     ]);
 
     return (
-        <div className='select-plan-step'>
-            <h1>Select your plan</h1>
-            <p>You have the option of monthly or yearly billing.</p>
+        <div className='step select-plan-step'>
+            <h1 className="step-title">Select your plan</h1>
+            <p className="subtitle">You have the option of monthly or yearly billing.</p>
 
-            <div>
-                <div className="plans">
+            <div className='step-container'>
+                <div className="plans-container">
                     {plans.map(plan => 
                         <Plan 
                             key={plan.name}
                             plan={plan}
                         />
                     )}
-
-                    <div className="billing-container">
-                        <label htmlFor="billing-toggle">Monthly</label>
-                        <div className="billing-toggle-container">
-                            <input 
-                                type="checkbox" 
-                                name="billing-toggle" 
-                                id="billing-toggle" 
-                                className='billing-toggle'
-                                defaultChecked={formData.billing === "monthly"}
-                                onChange={() => {
-                                    setFormData(prevData => {
-                                        return { 
-                                            ...prevData, 
-                                            billing: prevData.billing === "monthly" ? "yearly" : "monthly"
-                                        };
-                                    });
-                                }}
-                            />
-                        </div>
-                        <label htmlFor="billing-toggle">Yearly</label>
+                </div>
+                <div className="billing-container">
+                    <label htmlFor="billing-toggle">Monthly</label>
+                    <div className="billing-toggle-container">
+                        <input 
+                            type="checkbox" 
+                            name="billing-toggle" 
+                            id="billing-toggle" 
+                            className='billing-toggle'
+                            defaultChecked={formData.billing === "monthly"}
+                            onChange={() => {
+                                setFormData(prevData => {
+                                    return { 
+                                        ...prevData, 
+                                        billing: prevData.billing === "monthly" ? "yearly" : "monthly"
+                                    };
+                                });
+                            }}
+                        />
                     </div>
+                    <label htmlFor="billing-toggle">Yearly</label>
                 </div>
             </div>
         </div>

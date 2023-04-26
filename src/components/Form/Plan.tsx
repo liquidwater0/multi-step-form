@@ -57,14 +57,16 @@ export default function Plan({ plan }: { plan: PlanType }) {
                 alt={icon.alt}
                 className="icon" 
             />
-            <p className="plan-label">{ name }</p>
-            <p className="plan-cost">
-                {
-                    formData.billing === "monthly" ?
-                    `$${cost.monthly}/mo` :
-                    `$${cost.yearly}/yr`
-                }
-            </p>
+            <div>
+                <p className="plan-label">{ name }</p>
+                <p className="plan-cost">
+                    {
+                        formData.billing === "monthly" ?
+                        `$${cost.monthly}/mo` :
+                        `$${cost.yearly}/yr`
+                    }
+                </p>
+            </div>
         </div>
     )
 }

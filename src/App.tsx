@@ -1,6 +1,8 @@
 import { FormEvent } from 'react';
 import { useForm } from './context/FormContext';
 import "./scss/App.scss";
+import mobileSidebar from "./assets/images/bg-sidebar-mobile.svg";
+import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
 
 function App() {
 	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
@@ -10,22 +12,30 @@ function App() {
 	}
 
 	return (
-		<main>
+		<main className='main'>
 			<form onSubmit={handleFormSubmit} className='form'>
 				<aside className='side-bar'>
-					{steps.map(({ step, text }) => 
-						<div key={step} className='step-container'>
-							<div 
-								className={`step-number ${ currentStep.step === step ? "active" : "" }`}
-							>
-								{ step }
-							</div>
-							<div>
-								<p>Step { step }</p>
-								<p>{ text }</p>
-							</div>
-						</div>	
-					)}
+					<picture className='sidebar-image'>
+						<source media='(max-width: 800px)' srcSet={mobileSidebar}/>
+						<source media='(min-width: 1024px)' srcSet={desktopSidebar}/>
+						<img src={desktopSidebar} alt="sidebar image" />
+					</picture>
+
+					<div className="steps">
+						{steps.map(({ step, text }) => 
+							<div key={step} className='step-item'>
+								<div 
+									className={`step-number ${ currentStep.step === step ? "active" : "" }`}
+								>
+									{ step }
+								</div>
+								<div className='step-text'>
+									<p>Step { step }</p>
+									<p>{ text }</p>
+								</div>
+							</div>	
+						)}
+					</div>
 				</aside>
 
 				<div className="form-body">

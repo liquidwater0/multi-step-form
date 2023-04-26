@@ -34,11 +34,11 @@ export default function AddOns() {
     ]);
 
     return (
-        <div className='add-ons-step'>
-            <h1>Pick add-ons</h1>
-            <p>Add-ons help enhance your gaming experience.</p>
+        <div className='step add-ons-step'>
+            <h1 className="step-title">Pick add-ons</h1>
+            <p className="subtitle">Add-ons help enhance your gaming experience.</p>
 
-            <div className='add-ons-container'>
+            <div className='step-container'>
                 {addOns.map(addon =>
                     <AddOn
                         key={addon.name}

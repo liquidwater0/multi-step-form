@@ -17,7 +17,7 @@ export default function Summary() {
     }, []);
 
     return (
-        <div className='summary-step'>
+        <div className='step summary-step'>
             {
                 done ? (
                     <div className="finished">
@@ -34,33 +34,35 @@ export default function Summary() {
                     </div>
                 ) : (
                     <>
-                        <h1>Finishing up</h1>
-                        <p>Double-check everything looks OK before confirming</p>
+                        <h1 className="step-title">Finishing up</h1>
+                        <p className="subtitle">Double-check everything looks OK before confirming</p>
 
-                        <div className="summary">
-                            <div>
-                                <p>{`${formData.plan.name} (${formData.billing === "monthly" ? "Monthly" : "Yearly"})`}</p>
-                                <button onClick={() => goToStep(2)}>
-                                    Change
-                                </button>
-                            </div>
-                            <div className='price'>
-                                <p>{`$${formData.plan.cost.current}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
-                            </div>
-
-                            <hr/>
-
-                            {formData.addOns.map(({ name, cost }, index) => 
-                                <div key={index}>
-                                    <p>{ name }</p>
-                                    <p>{`+${cost.current}/${formData.billing === "monthly" ? "mo" : "yr" }`}</p>
+                        <div className="step-container">
+                            <div className="summary">
+                                <div>
+                                    <p>{`${formData.plan.name} (${formData.billing === "monthly" ? "Monthly" : "Yearly"})`}</p>
+                                    <button onClick={() => goToStep(2)}>
+                                        Change
+                                    </button>
                                 </div>
-                            )}
-                        </div>
+                                <div className='price'>
+                                    <p>{`$${formData.plan.cost.current}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
+                                </div>
 
-                        <div className='total'>
-                            <p>{`Total (${formData.billing === "monthly" ? "per month" : "per year"})`}</p>
-                            <p>{`+${formData.total}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
+                                <hr/>
+
+                                {formData.addOns.map(({ name, cost }, index) => 
+                                    <div key={index}>
+                                        <p>{ name }</p>
+                                        <p>{`+${cost.current}/${formData.billing === "monthly" ? "mo" : "yr" }`}</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className='total'>
+                                <p>{`Total (${formData.billing === "monthly" ? "per month" : "per year"})`}</p>
+                                <p>{`+${formData.total}/${formData.billing === "monthly" ? "mo" : "yr"}`}</p>
+                            </div>
                         </div>
                     </>
                 )
