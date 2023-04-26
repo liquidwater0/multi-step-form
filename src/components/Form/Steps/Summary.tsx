@@ -4,9 +4,6 @@ import thankYou from "../../../assets/images/icon-thank-you.svg";
 
 export default function Summary() {
     const { done, goToStep, formData, setFormData } = useForm();
-    // const totalCost = [...formData.addOns, formData.plan].reduce((prev, current) => {
-    //     return prev + current.cost;
-    // }, 0);
 
     useEffect(() => {
         setFormData(prevData => {
