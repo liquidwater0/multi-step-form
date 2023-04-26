@@ -11,21 +11,23 @@ export default function Plan({ plan }: { plan: PlanType }) {
         return false;
     });
 
+    function handlePlanSelect() {
+        setChecked(checkedState => !checkedState);
+        setFormData(prevData => {
+            return { 
+                ...prevData, 
+                plan: { 
+                    name: name, 
+                    cost: formData.billing === "monthly" ? cost.monthly : cost.yearly
+                } 
+            };
+        });
+    }
+
     return (
         <div 
             className={`plan ${checked ? "selected" : ""}`}
-            onClick={() => {
-                setChecked(checkedState => !checkedState);
-                setFormData(prevData => {
-                    return { 
-                        ...prevData, 
-                        plan: { 
-                            name: name, 
-                            cost: formData.billing === "monthly" ? cost.monthly : cost.yearly
-                        } 
-                    };
-                });
-            }}
+            onClick={handlePlanSelect}
         >
             <img 
                 src={icon.src} 
