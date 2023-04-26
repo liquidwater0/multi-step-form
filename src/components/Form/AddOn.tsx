@@ -29,7 +29,7 @@ export default function AddOn({ addon }: { addon: AddonType }) {
         >
             <input 
                 type="checkbox"
-                defaultChecked={checked}
+                checked={checked}
             />
 
             <div className='add-on-description'>
