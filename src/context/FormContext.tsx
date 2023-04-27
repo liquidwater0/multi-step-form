@@ -47,7 +47,9 @@ type FormContextType = {
     currentStep: Step,
     done: boolean,
     formData: FormData,
-    setFormData: Dispatch<SetStateAction<FormData>>
+    canProceed: boolean,
+    setCanProceed: Dispatch<SetStateAction<boolean>>,
+    setFormData: Dispatch<SetStateAction<FormData>>,
     nextStep: () => void,
     prevStep: () => void,
     goToStep: (step: number) => void,
@@ -85,6 +87,7 @@ export default function FormProvider({ children }: { children: ReactNode }) {
         total: 0
     });
     const [done, setDone] = useState<boolean>(false);
+    const [canProceed, setCanProceed] = useState<boolean>(false);
 
     useEffect(() => {
         setFormData(prevData => {
@@ -111,6 +114,8 @@ export default function FormProvider({ children }: { children: ReactNode }) {
     }, [formData.billing]);
 
     function nextStep() {
+        if (!canProceed) return;
+
         setCurrentStep(prevStep => {
             if (prevStep.step === steps.length) return prevStep;
 
@@ -147,7 +152,9 @@ export default function FormProvider({ children }: { children: ReactNode }) {
             steps, 
             currentStep, 
             done, 
-            formData, 
+            formData,
+            canProceed,
+            setCanProceed,
             setFormData, 
             nextStep, 
             prevStep, 

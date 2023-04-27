@@ -1,9 +1,21 @@
-import { ChangeEvent } from "react";
+import { useEffect, ChangeEvent } from "react";
 import { useForm } from "../../../context/FormContext";
 import Input from "../Input";
 
 export default function YourInfo() {
-    const { formData, setFormData } = useForm();
+    const { formData, setFormData, setCanProceed } = useForm();
+
+    useEffect(() => {
+        if (
+            formData.name.trim() === "" || 
+            formData.email.trim() === "" || 
+            formData.phone.trim() === ""
+        ) {
+            setCanProceed(false);
+        } else {
+            setCanProceed(true);
+        }
+    }, [formData.name, formData.email, formData.phone]);
 
     return (
         <div className='step your-info-step'>

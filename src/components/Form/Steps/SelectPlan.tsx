@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from '../../../context/FormContext';
 import arcade from "../../../assets/images/icon-arcade.svg";
 import advanced from "../../../assets/images/icon-advanced.svg";
@@ -13,7 +13,7 @@ export type PlanType = {
 }
 
 export default function SelectPlan() {
-    const { formData, setFormData } = useForm();
+    const { formData, setFormData, setCanProceed } = useForm();
     const [plans] = useState<PlanType[]>([
         {
             name: "Arcade",
@@ -38,6 +38,14 @@ export default function SelectPlan() {
             }
         }
     ]);
+
+    useEffect(() => {
+        if (formData.plan.name === "") {
+            setCanProceed(false);
+        } else {
+            setCanProceed(true);
+        }
+    }, [formData.plan]);
 
     return (
         <div className='step select-plan-step'>
