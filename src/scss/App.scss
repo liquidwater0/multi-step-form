@@ -38,10 +38,30 @@ body {
 }
 
 .attribution { 
-    font-size: 11px; 
+    position: absolute;
+    bottom: 20px;
+    font-size: 1rem; 
     text-align: center; 
 
     a { 
-        color: hsl(228, 45%, 44%); 
+        color: var(--color-primary-2); 
+        text-decoration: none;
+        font-weight: 700;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .attribution {
+        top: 10px;
+        pointer-events: none;
+
+        a {
+            font-size: 0.75rem;
+            color: var(--color-neutral-5);
+        }
     }
 }

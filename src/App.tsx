@@ -3,6 +3,7 @@ import { useForm } from './context/FormContext';
 import "./scss/App.scss";
 import mobileSidebar from "./assets/images/bg-sidebar-mobile.svg";
 import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
+import Attribution from './components/Attribution';
 
 function App() {
 	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
@@ -70,6 +71,8 @@ function App() {
 					}
 				</div>
 			</form>
+
+			<Attribution/>
 		</main>
 	);
 }
