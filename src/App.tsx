@@ -4,11 +4,6 @@ import "./scss/App.scss";
 import mobileSidebar from "./assets/images/bg-sidebar-mobile.svg";
 import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
 
-/*
-	TODO:
-	Make phone pattern work
-*/
-
 function App() {
 	const { steps, currentStep, done, nextStep, prevStep, confirm } = useForm();
 

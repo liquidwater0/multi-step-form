@@ -60,7 +60,7 @@ export default function YourInfo() {
                     <Input
                         type="tel"
                         id="phone"
-                        pattern="[?!+][0-9]*|[0-9]{1,}"
+                        pattern="([?!+].*|[0-9].*)"
                         aria-label="phone number input"
                         required
                         placeholder="e.g. +1 234 567 890"
