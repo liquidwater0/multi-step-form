@@ -71,6 +71,7 @@ export default function SelectPlan() {
                     <div className="billing-toggle-container">
                         <Slider
                             id="billing-toggle"
+                            aria-label={`billing toggle. billing is set to ${formData.billing}`}
                             defaultChecked={formData.billing === "monthly"}
                             onChange={() => {
                                 setFormData(prevData => {

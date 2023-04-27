@@ -45,6 +45,7 @@ export default function AddOn({ addon }: { addon: AddonType }) {
     return (
         <div 
             className={`add-on ${checked ? "selected" : ""}`}
+            aria-label={`add-on is ${checked ? "selected" : "not selected"}`}
             onClick={handleAddonClick}
         >
             <Checkbox checked={checked}/>

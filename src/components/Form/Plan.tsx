@@ -50,6 +50,7 @@ export default function Plan({ plan }: { plan: PlanType }) {
     return (
         <div 
             className={`plan ${checked ? "selected" : ""}`}
+            aria-label={`plan is ${formData.plan.name === name ? "selected" : "not selected"}`}
             onClick={handlePlanSelect}
         >
             <img 

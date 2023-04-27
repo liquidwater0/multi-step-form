@@ -44,6 +44,7 @@ export default function Summary() {
                                         <p>{`${formData.plan.name} (${formData.billing === "monthly" ? "Monthly" : "Yearly"})`}</p>
                                         <button 
                                             className="btn change-plan-button"
+                                            aria-label="change plan button"
                                             onClick={() => goToStep(2)} 
                                         >
                                             Change

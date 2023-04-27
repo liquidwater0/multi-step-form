@@ -29,6 +29,7 @@ export default function YourInfo() {
                         type="text"
                         id="name"
                         pattern="[a-z].*"
+                        aria-label="name input"
                         required
                         placeholder="e.g. Stephen King"
                         defaultValue={formData.name}
@@ -44,6 +45,7 @@ export default function YourInfo() {
                     <Input
                         type="email"
                         id="email"
+                        aria-label="email address input"
                         required
                         placeholder="e.g. stephenking@lorem.com"
                         defaultValue={formData.email}
@@ -60,6 +62,7 @@ export default function YourInfo() {
                         type="tel"
                         id="phone"
                         pattern="[?!+][0-9]*|[0-9]{1,}"
+                        aria-label="phone number input"
                         required
                         placeholder="e.g. +1 234 567 890"
                         defaultValue={formData.phone}
