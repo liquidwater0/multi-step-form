@@ -18,6 +18,10 @@
             border-color 250ms,
             background-color 250ms;
 
+        * {
+            pointer-events: none;
+        }
+
         .add-on-description {
             p:nth-child(1) {
                 font-weight: 700;
