@@ -6,7 +6,6 @@ import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
 
 /*
 	TODO:
-	Fix name pattern
 	Make phone pattern work
 */
 

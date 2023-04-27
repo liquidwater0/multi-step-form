@@ -28,7 +28,6 @@ export default function YourInfo() {
                     <Input
                         type="text"
                         id="name"
-                        pattern="[a-z].*"
                         aria-label="name input"
                         required
                         placeholder="e.g. Stephen King"
