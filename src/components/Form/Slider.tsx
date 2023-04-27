@@ -12,7 +12,7 @@ export default function Slider({ ...props }: HTMLAttributes<HTMLInputElement>) {
         <>
             <input 
                 type="checkbox"
-                style={{ position: "absolute", opacity: 0 }}
+                style={{ position: "absolute", opacity: 0, pointerEvents: "none" }}
                 ref={inputRef}
                 onInput={(event) => setChecked((event.target as HTMLInputElement).checked)}
                 { ...props }
