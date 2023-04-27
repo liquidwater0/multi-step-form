@@ -28,7 +28,7 @@ export default function YourInfo() {
                     <Input
                         type="text"
                         id="name"
-                        pattern="[a-z].*[^0-9]"
+                        pattern="[a-z].*"
                         required
                         placeholder="e.g. Stephen King"
                         defaultValue={formData.name}
