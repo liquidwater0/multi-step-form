@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "../../context/FormContext";
 import { AddonType } from "./Steps/AddOns";
 import Checkbox from "./Checkbox";
@@ -11,9 +11,12 @@ export default function AddOn({ addon }: { addon: AddonType }) {
         if (currentAddon) return true;
         return false;
     });
+    const checkboxLabel = useRef<HTMLLabelElement>(null!);
+    const id = crypto.randomUUID();
 
     function handleAddonClick() {
         setChecked(checkedState => !checkedState);
+        checkboxLabel.current.click();
 
         if (!checked) {
             setFormData(prevData => {
@@ -48,7 +51,16 @@ export default function AddOn({ addon }: { addon: AddonType }) {
             aria-label={`add-on is ${checked ? "selected" : "not selected"}`}
             onClick={handleAddonClick}
         >
-            <Checkbox checked={checked}/>
+            <label 
+                htmlFor={id}
+                aria-hidden="true"
+                style={{ position: "absolute", opacity: 0, pointerEvents: "none" }}
+                ref={checkboxLabel}
+            />
+            <Checkbox 
+                defaultChecked={checked}
+                id={id}
+            />
             
             <div className='add-on-description'>
                 <p>{ name }</p>
