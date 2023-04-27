@@ -75,3 +75,31 @@
         }
     }
 }
+
+@media (max-width: 900px) {
+    .plan-summary {
+        font-size: 1.25rem;
+    }
+
+    .addon-name {
+        font-size: 1.25rem;
+    }
+
+    .addon-price {
+        font-size: 1.125rem;
+    }
+
+    .finished {
+        position: initial !important;
+        transform: none !important;
+        padding: 10rem 0;
+
+        h2 {
+            font-size: 2rem !important;
+        }
+
+        p {
+            font-size: 1.25rem;
+        }
+    }
+}

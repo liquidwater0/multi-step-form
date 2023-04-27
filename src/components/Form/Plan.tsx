@@ -57,7 +57,7 @@ export default function Plan({ plan }: { plan: PlanType }) {
                 src={icon.src} 
                 alt={icon.alt}
             />
-            <div>
+            <div className="plan-details">
                 <p className="plan-label">{ name }</p>
                 <p className="plan-cost">
                     {

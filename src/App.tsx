@@ -22,7 +22,7 @@ function App() {
 			<form onSubmit={handleFormSubmit} className='form'>
 				<aside className='side-bar'>
 					<picture className='sidebar-image'>
-						<source media='(max-width: 800px)' srcSet={mobileSidebar}/>
+						<source media='(max-width: 900px)' srcSet={mobileSidebar}/>
 						<source media='(min-width: 1024px)' srcSet={desktopSidebar}/>
 						<img src={desktopSidebar} alt="sidebar image" />
 					</picture>

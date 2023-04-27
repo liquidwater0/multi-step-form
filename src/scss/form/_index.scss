@@ -110,3 +110,54 @@
         }
     }
 }
+
+@media (max-width: 900px) {
+    .form {
+        width: 600px;
+        grid-template-columns: auto;
+        padding: 0.25rem;
+
+        .form-body {
+            padding-bottom: 2rem;
+            margin: 1rem;
+        }
+
+        .side-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        .form-buttons {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: var(--color-neutral-5);
+            padding: 1rem;
+        }
+
+        .steps {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-text {
+            display: none;
+        }
+
+        .step-title {
+            margin-top: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+        }
+    }
+}

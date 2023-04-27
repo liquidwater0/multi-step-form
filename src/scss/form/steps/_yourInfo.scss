@@ -19,3 +19,18 @@
         }
     }
 }
+
+@media (max-width: 450px) {
+    .form-input-section {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-size: 0.8em;
+        }
+
+        .validation-message {
+            font-size: 0.8em !important;
+        }
+    }
+}
