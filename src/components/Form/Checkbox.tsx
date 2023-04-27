@@ -1,12 +1,17 @@
 import { useRef, useState, useEffect, HTMLAttributes } from 'react';
 
-export default function Checkbox({ ...props }: HTMLAttributes<HTMLInputElement>) {
+type CheckboxProps = {
+    checked?: boolean,
+    readOnly?: boolean
+} & HTMLAttributes<HTMLInputElement>
+
+export default function Checkbox({ ...props }: CheckboxProps) {
     const inputRef = useRef<HTMLInputElement>(null!);
     const [checked, setChecked] = useState<boolean>();
 
     useEffect(() => {
         setChecked(inputRef.current.checked);
-    }, []);
+    }, [props.checked, props.defaultChecked]);
 
     return (
         <>
