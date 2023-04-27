@@ -23,8 +23,7 @@ export default function Summary() {
                     <div className="finished">
                         <img 
                             src={thankYou}
-                            alt="thank you icon" 
-                            className="icon" 
+                            alt="thank you icon"
                         />
                         <h2>Thank you!</h2>
                         <p>

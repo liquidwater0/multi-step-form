@@ -56,7 +56,6 @@ export default function Plan({ plan }: { plan: PlanType }) {
             <img 
                 src={icon.src} 
                 alt={icon.alt}
-                className="icon" 
             />
             <div>
                 <p className="plan-label">{ name }</p>
