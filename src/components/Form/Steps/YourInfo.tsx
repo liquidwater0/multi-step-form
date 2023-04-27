@@ -28,6 +28,7 @@ export default function YourInfo() {
                     <Input
                         type="text"
                         id="name"
+                        pattern="[a-z].*[^0-9]"
                         required
                         placeholder="e.g. Stephen King"
                         defaultValue={formData.name}
@@ -58,6 +59,7 @@ export default function YourInfo() {
                     <Input
                         type="tel"
                         id="phone"
+                        pattern="[?!+][0-9]*|[0-9]{1,}"
                         required
                         placeholder="e.g. +1 234 567 890"
                         defaultValue={formData.phone}

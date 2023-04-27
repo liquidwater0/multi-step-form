@@ -6,7 +6,7 @@ import desktopSidebar from "./assets/images/bg-sidebar-desktop.svg";
 
 /*
 	TODO:
-	Make validation
+	Make phone pattern work
 	Make responsive
 	Make accessible
 */
