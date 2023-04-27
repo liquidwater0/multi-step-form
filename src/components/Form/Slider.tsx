@@ -6,7 +6,7 @@ export default function Slider({ ...props }: HTMLAttributes<HTMLInputElement>) {
 
     useEffect(() => {
         setChecked(inputRef.current.checked);
-    });
+    }, []);
     
     return (
         <>
@@ -14,6 +14,7 @@ export default function Slider({ ...props }: HTMLAttributes<HTMLInputElement>) {
                 type="checkbox"
                 style={{ position: "absolute", opacity: 0 }}
                 ref={inputRef}
+                onInput={(event) => setChecked((event.target as HTMLInputElement).checked)}
                 { ...props }
             />
 
